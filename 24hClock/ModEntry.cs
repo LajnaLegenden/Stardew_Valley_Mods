@@ -15,8 +15,15 @@ namespace Lajna.Mods.MilitaryTime
         /// <param name="helper">Provides simplified APIs for writing mods.</param>
         public override void Entry(IModHelper helper)
         {
-            TimeEvents.AfterDayStarted += TimeEvents_AfterDayStarted;
+            TimeEvents.AfterDayStarted += this.TimeEvents_AfterDayStarted;
         }
+
+        /*********
+        ** Private methods
+        *********/
+        /// <summary>The method invoked after a new day starts.</summary>
+        /// <param name="sender">The event sender.</param>
+        /// <param name="e">The event data.</param>
         private void TimeEvents_AfterDayStarted(object sender, EventArgs e)
         {
             Game1.onScreenMenus.Add(new Clock());
