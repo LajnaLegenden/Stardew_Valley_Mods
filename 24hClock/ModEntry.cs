@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
+using StardewValley.Menus;
 
 namespace Lajna.Mods.MilitaryTime
 {
@@ -26,7 +28,8 @@ namespace Lajna.Mods.MilitaryTime
         /// <param name="e">The event data.</param>
         private void TimeEvents_AfterDayStarted(object sender, EventArgs e)
         {
-            Game1.onScreenMenus.Add(new Clock());
+            DayTimeMoneyBox timeBox = Game1.onScreenMenus.OfType<DayTimeMoneyBox>().First();
+            Game1.onScreenMenus.Add(new Clock(timeBox));
         }
     }
 }

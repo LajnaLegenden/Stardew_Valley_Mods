@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using StardewValley.Menus;
@@ -15,10 +14,20 @@ namespace Lajna.Mods.MilitaryTime
         /// <summary>The source rectangle of the clock background in the spritesheet.</summary>
         private readonly Rectangle SourceRect = new Rectangle(360, 460, 40, 9);
 
+        /// <summary>The game's time box to change.</summary>
+        private readonly DayTimeMoneyBox TimeBox;
+
 
         /*********
         ** Public methods
         *********/
+        /// <summary>Construct an instance.</summary>
+        /// <param name="timeBox">The game's time box to change.</param>
+        public Clock(DayTimeMoneyBox timeBox)
+        {
+            this.TimeBox = timeBox;
+        }
+
         /// <summary>The method invoked when the player right-clicks on the lookup UI.</summary>
         /// <param name="x">The X-position of the cursor.</param>
         /// <param name="y">The Y-position of the cursor.</param>
@@ -40,9 +49,8 @@ namespace Lajna.Mods.MilitaryTime
             time = hr + ":" + min;
 
             // get positions
-            DayTimeMoneyBox box = Game1.onScreenMenus.OfType<DayTimeMoneyBox>().First();
-            Vector2 textPosition = box.position + new Vector2(-20, -9);
-            Vector2 backgroundPosition = box.position + new Vector2(108, 115);
+            Vector2 textPosition = this.TimeBox.position + new Vector2(-20, -9);
+            Vector2 backgroundPosition = this.TimeBox.position + new Vector2(108, 115);
             Vector2 textSize = Game1.dialogueFont.MeasureString(Game1.timeOfDay.ToString());
             Vector2 textOffset = new Vector2((float)(this.SourceRect.X * 0.55 - textSize.X / 2.0), (float)(this.SourceRect.Y * .31 - textSize.Y / 2.0));
 
