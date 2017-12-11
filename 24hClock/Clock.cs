@@ -39,14 +39,8 @@ namespace Lajna.Mods.MilitaryTime
         public override void draw(SpriteBatch spriteBatch)
         {
             // format time
-            string time = "";
-            if (Game1.timeOfDay < 1000)
-                time = "0" + Game1.timeOfDay;
-
-            string hr = time.Substring(0, 2);
-            string min = time.Substring(2, 2);
-
-            time = hr + ":" + min;
+            string time = Game1.timeOfDay.ToString("0000"); // zero-pad up to length 4
+            time = time.Substring(0, 2) + ":" + time.Substring(2, 2);
 
             // get positions
             Vector2 textPosition = this.TimeBox.position + new Vector2(-20, -9);
