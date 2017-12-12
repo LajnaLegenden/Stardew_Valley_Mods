@@ -16,7 +16,7 @@ namespace Lajna.Mods.MilitaryTime
 
         /// <summary>The game's time box to change.</summary>
         private readonly DayTimeMoneyBox TimeBox;
-
+       
 
         /*********
         ** Public methods
@@ -39,6 +39,7 @@ namespace Lajna.Mods.MilitaryTime
         public override void draw(SpriteBatch spriteBatch)
         {
             // format time
+            
             string time = Game1.timeOfDay.ToString("0000"); // zero-pad up to length 4
             time = time.Substring(0, 2) + ":" + time.Substring(2, 2);
 
@@ -50,7 +51,9 @@ namespace Lajna.Mods.MilitaryTime
 
             // draw clock
             spriteBatch.Draw(Game1.mouseCursors, backgroundPosition, this.SourceRect, Color.White, 0f, Vector2.Zero, 4f, SpriteEffects.None, 0.9f);
-            spriteBatch.DrawString(Game1.dialogueFont, time, textPosition + textOffset, Color.Black);
+            Utility.drawTextWithShadow(spriteBatch, time.ToString(), Game1.dialogueFont, textPosition + textOffset, Game1.textColor, 1f, -1f, -1, -1, 1f, 3);
         }
+
+
     }
 }
