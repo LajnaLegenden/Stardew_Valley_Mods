@@ -39,9 +39,12 @@ namespace Lajna.Mods.MilitaryTime
         public override void draw(SpriteBatch spriteBatch)
         {
             // format time
+            int time = Game1.timeOfDay;
+            time = time % 2400;
+
+            string Stime = time.ToString("0000"); // zero-pad up to length 4
             
-            string time = Game1.timeOfDay.ToString("0000"); // zero-pad up to length 4
-            time = time.Substring(0, 2) + ":" + time.Substring(2, 2);
+            Stime = Stime.Substring(0, 2) + ":" + Stime.Substring(2, 2);
 
             // get positions
             Vector2 textPosition = this.TimeBox.position + new Vector2(-20, -9);
@@ -51,7 +54,7 @@ namespace Lajna.Mods.MilitaryTime
 
             // draw clock
             spriteBatch.Draw(Game1.mouseCursors, backgroundPosition, this.SourceRect, Color.White, 0f, Vector2.Zero, 4f, SpriteEffects.None, 0.9f);
-            Utility.drawTextWithShadow(spriteBatch, time.ToString(), Game1.dialogueFont, textPosition + textOffset, Game1.textColor, 1f, -1f, -1, -1, 1f, 3);
+            Utility.drawTextWithShadow(spriteBatch, Stime, Game1.dialogueFont, textPosition + textOffset, Game1.textColor, 1f, -1f, -1, -1, 1f, 3);
         }
 
 
