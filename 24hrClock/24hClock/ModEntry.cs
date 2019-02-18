@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
@@ -7,7 +6,7 @@ using StardewValley.Menus;
 
 namespace Lajna.Mods.MilitaryTime
 {
-    /// <summary>The mod entry point.</summary>
+    /// <summary>The mod entry class loaded by SMAPI.</summary>
     public class ModEntry : Mod
     {
         /*********
