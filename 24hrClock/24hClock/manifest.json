@@ -5,6 +5,6 @@
   "Description": "Makes the clock show time in 24h format.",
   "UniqueID": "Lajna.24hClock",
   "EntryDll": "24hClock.dll",
-  "MinimumApiVersion": "2.10.2",
+  "MinimumApiVersion": "2.11.2",
   "UpdateKeys": [ "Nexus:1695" ]
 }
